@@ -80,10 +80,8 @@ def logout_user(request):
     return redirect('home')
 
 def register_user(request):
-    form = SignUpForm()
     if request.method == "POST":
         form = SignUpForm(request.POST)
-
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -94,8 +92,8 @@ def register_user(request):
             messages.success(request, "You Have Registered Successfully!!! Welcome!")
             return redirect('home')
         else:
-            messages.success(request, "There was an error in registration. Please try again")
-            return redirect('register')
-
+            # KEEP THE FORM WITH ERRORS
+            return render(request, 'register.html', {'form': form})
     else:
+        form = SignUpForm()
         return render(request, 'register.html', {'form': form})
