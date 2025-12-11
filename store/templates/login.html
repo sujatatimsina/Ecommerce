@@ -1,30 +1,106 @@
 {% extends "base.html" %}
 {% block content %}
 
-<header class="bg-dark py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Login</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Login in to your account</p>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <!-- Login Card -->
+            <div class="korean-form">
+                <div class="text-center mb-4">
+                    <div class="fs-1 mb-3">🔐</div>
+                    <h2 class="fw-bold">Welcome Back</h2>
+                    <p class="text-muted">Login to your KimchiKart account</p>
+                </div>
+
+                <form method="POST" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    
+                    <!-- Username -->
+                    <div class="mb-4">
+                        <label for="username" class="form-label fw-bold">
+                            <i class="bi bi-person me-1"></i>Username
+                        </label>
+                        <input type="text" 
+                               class="form-control py-3 border-danger border-opacity-25" 
+                               id="username" 
+                               name="username" 
+                               placeholder="Enter your username"
+                               required>
+                        <div class="form-text">Enter your registered username</div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-4">
+                        <label for="password" class="form-label fw-bold">
+                            <i class="bi bi-lock me-1"></i>Password
+                        </label>
+                        <input type="password" 
+                               class="form-control py-3 border-danger border-opacity-25" 
+                               id="password" 
+                               name="password" 
+                               placeholder="Enter your password"
+                               required>
+                        <div class="form-text">
+                            <a href="#" class="text-danger text-decoration-none">Forgot password?</a>
+                        </div>
+                    </div>
+
+                    <!-- Remember Me -->
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="checkbox" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-korean w-100 py-3 fw-bold mb-4">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>Login to Account
+                    </button>
+
+                    <!-- Divider -->
+                    <div class="position-relative text-center mb-4">
+                        <hr>
+                        <span class="position-absolute top-50 start-50 translate-middle bg-white px-3 text-muted">
+                            or continue with
+                        </span>
+                    </div>
+
+                    
+                </form>
+
+                <!-- Register Link -->
+                <div class="text-center mt-4 pt-3 border-top">
+                    <p class="text-muted mb-0">Don't have an account?
+                        <a href="{% url 'register' %}" class="text-danger fw-bold text-decoration-none">
+                            Create one now
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Benefits Card -->
+            <div class="card border-0 shadow-sm mt-4">
+                <div class="card-body text-center">
+                    <h6 class="fw-bold mb-3">🌟 Benefits of KimchiKart Account</h6>
+                    <div class="row g-3">
+                        <div class="col-4">
+                            <div class="text-danger">🚚</div>
+                            <small>Fast Shipping</small>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-danger">🎁</div>
+                            <small>Exclusive Deals</small>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-danger">📦</div>
+                            <small>Order Tracking</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</header>
-<br>
-
-<form method="POST" action="{% url 'login' %}" class="container px-4 px-lg-5 my-5">
-    {% csrf_token %}
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Username</label>
-      <input type="text" class="form-control" name="username" placeholder="Enter username" id="exampleInputEmail1" aria-describedby="emailHelp">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Enter password">
-    </div>
-    <br>
-    <button type="submit" class="btn btn-secondary">Login</button>
-</form>
-
-
+</div>
 
 {% endblock %}

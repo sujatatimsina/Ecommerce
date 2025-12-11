@@ -1,40 +1,128 @@
 <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="{% url "home" %}">DjangoCart</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+            <span class="korean-text-red fw-bold fs-3">김치Kart</span>
+            <span class="badge bg-danger ms-2" style="font-size: 0.6rem; padding: 2px 6px;">한국</span>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
 
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url "home" %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link active korean-text-red fw-medium" aria-current="page" href="{% url 'home' %}">🏠 Home</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="{% url "about" %}">About</a></li>
-
-                {% if user.is_authenticated %}
-                <li class="nav-item"><a class="nav-link" href="{% url "logout" %}">Logout</a></li>
-                {% else %}
-                <li class="nav-item"><a class="nav-link" href="{% url "login" %}">Login</a></li>
-                
-                <li class="nav-item"><a class="nav-link" href="{% url "register" %}">Register</a></li>
-                {% endif %}
+                <li class="nav-item"><a class="nav-link text-dark fw-medium" href="{% url 'about' %}">ℹ️ About</a></li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{% url "home" %}">All Products</a></li>
+                    <a class="nav-link dropdown-toggle text-dark fw-medium" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        🛍️ Categories
+                    </a>
+                    <ul class="dropdown-menu shadow-sm border-0" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{% url 'home' %}">✨ All Products</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="{% url "category" "Self-help-Books" %}">Self-help Books</a></li>
-                        <li><a class="dropdown-item" href="{% url "category" 'Western-Fantasy' %}">Western Fantasy</a></li>
+                        <li><a class="dropdown-item" href="{% url 'category' 'kimchi-pickles' %}">🥬 Kimchi & Pickles</a></li>
+                        <li><a class="dropdown-item" href="{% url 'category' 'noodles-instant' %}">🍜 Noodles & Instant</a></li>
+                        <li><a class="dropdown-item" href="{% url 'category' 'sauces-pastes' %}">🧂 Sauces & Pastes</a></li>
+                        <li><a class="dropdown-item" href="{% url 'category' 'snacks-cookies' %}">🍪 Snacks & Cookies</a></li>
+                        <li><a class="dropdown-item" href="{% url 'category' 'beverages' %}">🥤 Beverages</a></li>
+                        <li><hr class="dropdown-divider" /></li>
                     </ul>
                 </li>
+
+                {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-dark fw-medium" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        👤 {{ user.username }}
+                    </a>
+                    <ul class="dropdown-menu shadow-sm border-0">
+                        <li><a class="dropdown-item" href="#">📦 My Orders</a></li>
+                        <li><a class="dropdown-item" href="#">⚙️ Account Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="{% url 'logout' %}">🚪 Logout</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li class="nav-item"><a class="nav-link text-dark fw-medium" href="{% url 'login' %}">🔑 Login</a></li>
+                <li class="nav-item"><a class="nav-link text-dark fw-medium" href="{% url 'register' %}">📝 Register</a></li>
+                {% endif %}
+
             </ul>
-            <form class="d-flex">
-                <a href="{% url "cart_summary" %}" class="btn btn-outline-dark">
-                    <i class="bi-cart-fill me-1"></i>
+            
+            <!-- Search Form -->
+            <form class="d-flex align-items-center" method="GET" action="{% url 'search' %}">
+                <div class="input-group me-3" style="max-width: 300px;">
+                    <input type="text" 
+                           class="form-control border-danger" 
+                           name="q" 
+                           id="searchInput"
+                           placeholder="Search kimchi, ramyun, snacks..." 
+                           aria-label="Search"
+                           value="{{ request.GET.q|default:'' }}"
+                           required>
+                    <button class="btn btn-danger" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+                <a href="{% url 'cart_summary' %}" class="btn btn-korean position-relative">
+                    <i class="bi bi-cart3 me-1"></i>
                     Cart
-                    <span class="badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity">{{ cart|length }}</span>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-white text-danger border border-danger">
+                        {{ cart|length }}
+                    </span>
                 </a>
             </form>
         </div>
     </div>
 </nav>
+
+<!-- Add this script for auto-suggest and better UX -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchForm = document.querySelector('form[action="{% url 'search' %}"]');
+    const searchInput = document.getElementById('searchInput');
+    
+    // Auto-focus on search input when dropdown opens (optional)
+    const searchDropdown = document.querySelector('.input-group');
+    
+    // Add instant search on typing (optional feature)
+    let searchTimeout;
+    searchInput.addEventListener('input', function() {
+        clearTimeout(searchTimeout);
+        if (this.value.length >= 2) {
+            searchTimeout = setTimeout(() => {
+                // Optional: You could implement AJAX live search here
+                console.log('Searching for:', this.value);
+            }, 500);
+        }
+    });
+    
+    // Prevent empty search submission
+    searchForm.addEventListener('submit', function(e) {
+        if (!searchInput.value.trim()) {
+            e.preventDefault();
+            searchInput.focus();
+            searchInput.style.borderColor = 'red';
+            setTimeout(() => {
+                searchInput.style.borderColor = '';
+            }, 1000);
+        }
+    });
+    
+    // Popular search suggestions (optional)
+    const popularSearches = [
+        'kimchi', 'ramyun', 'gochujang', 
+        'seaweed snacks', 'korean drinks', 'spicy',
+        'vegetarian', 'instant noodles', 'bibigo'
+    ];
+    
+    // Add keyboard shortcut (Ctrl+K) to focus search
+    document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            searchInput.focus();
+        }
+    });
+});
+</script>

@@ -1,37 +1,171 @@
 {% extends "base.html" %}
 {% block content %}
 
-<header class="bg-dark py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">About Us...</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Welcome to DjangoCart</p>
+<!-- About Header -->
+<div class="container-fluid korean-banner">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-8 text-center text-lg-start">
+                <h1 class="display-4 fw-bold mb-3">About KimchiKart</h1>
+                <p class="lead mb-0">Bringing authentic Korean flavors to your kitchen since 2025</p>
+            </div>
+            <div class="col-lg-4 text-center d-none d-lg-block">
+                <div class="fs-1">🇰🇷🥢🍜</div>
+            </div>
         </div>
     </div>
-</header>
-<br><br>
-<div class="container">
-    <div class="row">
-        <center>
-            <div class="col-8">
-                <p align="justify">
-                    DjangoCart is an e-commerce website that allows you to buy products online. We have a wide range of products available for you to choose from. We have products from various categories like electronics, clothing, accessories, and many more. We have a user-friendly interface that allows you to easily navigate through the website and find the products you are looking for. We also have a secure payment gateway that ensures that your transactions are safe and secure. So, what are you waiting for? Start shopping now and get your favorite products delivered to your doorstep!
-                </p>
-            </div>
-        </center>
-    </div>
 </div>
-<br>
-<div class="container">
-    <div class="row">
-        <center>
-            <div class="col-8">
-                <h2>Our Team</h2>
-                <p align="justify">
-                    We have a team of dedicated professionals who work hard to ensure that you have a great shopping experience on our website. Our team is always ready to assist you with any queries or concerns you may have. We are committed to providing you with the best products and services, and we strive to make your shopping experience as smooth and hassle-free as possible. So, if you have any questions or need any help, feel free to reach out to us, and we will be happy to assist you!
-                </p>
+
+<!-- Main Content -->
+<div class="container py-5">
+    <!-- Our Story -->
+    <div class="row align-items-center mb-5">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <div class="position-relative">
+                <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" 
+                     class="img-fluid rounded-3 shadow" 
+                     alt="Korean Food Market"
+                     style="height: 400px; object-fit: cover;">
+                <div class="position-absolute bottom-0 start-0 bg-white p-3 m-3 rounded shadow-sm">
+                    <span class="text-danger fw-bold">✨ Authentic Korean Taste</span>
+                </div>
             </div>
-        </center>
+        </div>
+        <div class="col-lg-6">
+            <h2 class="fw-bold mb-4">Our Story 🇰🇷</h2>
+            <p class="lead text-muted mb-4">
+                Founded in 2024, KimchiKart was born from a simple idea: make authentic Korean groceries accessible to everyone, everywhere.
+            </p>
+            <p class="mb-4">
+                What started as a passion project for Korean cuisine has grown into a trusted source for premium Korean ingredients, snacks, and beverages. We work directly with Korean producers and suppliers to ensure every product meets our high standards of quality and authenticity.
+            </p>
+            <div class="d-flex flex-wrap gap-3">
+                <div class="text-center p-3 bg-danger bg-opacity-10 rounded">
+                    <div class="fs-3">🥬</div>
+                    <div class="fw-bold">Fresh Kimchi</div>
+                </div>
+                <div class="text-center p-3 bg-danger bg-opacity-10 rounded">
+                    <div class="fs-3">🚚</div>
+                    <div class="fw-bold">Fast Delivery</div>
+                </div>
+                <div class="text-center p-3 bg-danger bg-opacity-10 rounded">
+                    <div class="fs-3">⭐</div>
+                    <div class="fw-bold">5-Star Quality</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mission & Values -->
+    <div class="row mb-5">
+        <div class="col-12 text-center mb-5">
+            <h2 class="fw-bold mb-3">Our Mission & Values</h2>
+            <p class="text-muted mx-auto" style="max-width: 700px;">
+                We're committed to preserving and sharing the rich culinary heritage of Korea through authentic products and exceptional service.
+            </p>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center p-4">
+                    <div class="fs-1 text-danger mb-3">🎯</div>
+                    <h4 class="fw-bold mb-3">Authenticity First</h4>
+                    <p class="text-muted">
+                        Every product in our store is sourced directly from Korea, ensuring you get the genuine taste you're looking for.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center p-4">
+                    <div class="fs-1 text-danger mb-3">❤️</div>
+                    <h4 class="fw-bold mb-3">Quality Guarantee</h4>
+                    <p class="text-muted">
+                        We personally taste-test every product before adding it to our catalog. If you're not satisfied, we'll make it right.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center p-4">
+                    <div class="fs-1 text-danger mb-3">🌍</div>
+                    <h4 class="fw-bold mb-3">Global Community</h4>
+                    <p class="text-muted">
+                        Connecting Korean food lovers worldwide and helping everyone cook authentic Korean meals at home.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="row mb-5">
+        <div class="col-12 text-center mb-5">
+            <h2 class="fw-bold mb-3">Meet Our Team</h2>
+            <p class="text-muted mx-auto" style="max-width: 700px;">
+                A passionate group of Korean food enthusiasts dedicated to bringing you the best shopping experience.
+            </p>
+        </div>
+        
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="text-center">
+                <div class="bg-danger bg-opacity-10 rounded-circle p-4 d-inline-block mb-3">
+                    <span class="fs-2">👨‍🍳</span>
+                </div>
+                <h5 class="fw-bold mb-1">Min-Joon Park</h5>
+                <p class="text-muted small">Head Chef & Product Curator</p>
+            </div>
+        </div>
+        
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="text-center">
+                <div class="bg-danger bg-opacity-10 rounded-circle p-4 d-inline-block mb-3">
+                    <span class="fs-2">👩‍💼</span>
+                </div>
+                <h5 class="fw-bold mb-1">Ji-Woo Kim</h5>
+                <p class="text-muted small">Operations Manager</p>
+            </div>
+        </div>
+        
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="text-center">
+                <div class="bg-danger bg-opacity-10 rounded-circle p-4 d-inline-block mb-3">
+                    <span class="fs-2">👨‍💻</span>
+                </div>
+                <h5 class="fw-bold mb-1">Tae-Hyun Lee</h5>
+                <p class="text-muted small">Tech & Logistics</p>
+            </div>
+        </div>
+        
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="text-center">
+                <div class="bg-danger bg-opacity-10 rounded-circle p-4 d-inline-block mb-3">
+                    <span class="fs-2">👩‍🍳</span>
+                </div>
+                <h5 class="fw-bold mb-1">Hye-Jin Cho</h5>
+                <p class="text-muted small">Customer Experience</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact/CTA -->
+    <div class="text-center py-5 border-top">
+        <h3 class="fw-bold mb-4">Ready to Taste Korea?</h3>
+        <p class="text-muted mb-4 mx-auto" style="max-width: 600px;">
+            Join thousands of satisfied customers who trust us for their Korean grocery needs.
+        </p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a href="{% url 'home' %}" class="btn btn-korean btn-lg px-4">
+                <i class="bi bi-shop me-2"></i>Start Shopping
+            </a>
+            <a href="{% url 'register' %}" class="btn btn-outline-korean btn-lg px-4">
+                <i class="bi bi-person-plus me-2"></i>Create Account
+            </a>
+        </div>
     </div>
 </div>
 

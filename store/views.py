@@ -7,7 +7,33 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm
 from django import forms
 
+# Add this function to your views.py
+from django.db.models import Q
 
+def search(request):
+    if request.method == 'GET':
+        query = request.GET.get('q', '')
+        
+        if query:
+            # Search in name, korean_name, description, and category
+            products = Product.objects.filter(
+                Q(name__icontains=query) |
+                Q(korean_name__icontains=query) |
+                Q(description__icontains=query) |
+                Q(category__name__icontains=query) |
+                Q(brand__icontains=query)
+            ).distinct()
+        else:
+            products = Product.objects.none()
+        
+        context = {
+            'products': products,
+            'query': query,
+            'results_count': products.count()
+        }
+        return render(request, 'search_results.html', context)
+    
+    return redirect('home')
 def category(request, cat):
     # Replace the '-' with a space
     cat = cat.replace('-', ' ')

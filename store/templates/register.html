@@ -1,23 +1,114 @@
 {% extends "base.html" %}
 {% block content %}
 
-<header class="bg-dark py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Register</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Register your account</p>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <!-- Register Card -->
+            <div class="korean-form">
+                <div class="text-center mb-4">
+                    <div class="fs-1 mb-3">📝</div>
+                    <h2 class="fw-bold">Join KimchiKart</h2>
+                    <p class="text-muted">Create your account to start shopping authentic Korean groceries</p>
+                </div>
+
+                <form method="POST" action="{% url 'register' %}">
+                    {% csrf_token %}
+                    
+                    <!-- Form Fields -->
+                    <div class="row g-3 mb-4">
+                        <!-- Username -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Username *</label>
+                            {{ form.username }}
+                            {% if form.username.errors %}
+                            <div class="text-danger small">{{ form.username.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Email Address *</label>
+                            {{ form.email }}
+                            {% if form.email.errors %}
+                            <div class="text-danger small">{{ form.email.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-4">
+                        <!-- First Name -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">First Name *</label>
+                            {{ form.first_name }}
+                        </div>
+                        
+                        <!-- Last Name -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Last Name *</label>
+                            {{ form.last_name }}
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-4">
+                        <!-- Password -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Password *</label>
+                            {{ form.password1 }}
+                            {% if form.password1.errors %}
+                            <div class="text-danger small">{{ form.password1.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Confirm Password -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Confirm Password *</label>
+                            {{ form.password2 }}
+                            {% if form.password2.errors %}
+                            <div class="text-danger small">{{ form.password2.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-korean w-100 py-3 fw-bold mb-4">
+                        <i class="bi bi-person-plus me-2"></i>Create Account
+                    </button>
+
+                    <!-- Login Link -->
+                    <div class="text-center">
+                        <p class="text-muted mb-0">Already have an account?
+                            <a href="{% url 'login' %}" class="text-danger fw-bold text-decoration-none">
+                                Login here
+                            </a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+          
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</header>
-<br>
+</div>
 
-<form method="POST" action="{% url 'register' %}" class="container px-4 px-lg-5 my-5">
-    {% csrf_token %}
-    
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-secondary">Register</button>
-</form>
+<style>
+/* Style the form fields */
+.form-control {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 12px;
+    transition: all 0.3s;
+}
 
-
+.form-control:focus {
+    border-color: #CD2E3A;
+    box-shadow: 0 0 0 0.25rem rgba(205, 46, 58, 0.25);
+}
+</style>
 
 {% endblock %}
